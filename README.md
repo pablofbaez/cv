@@ -1,7 +1,6 @@
 ## My pagedown rendered CV
 
-README written by Nick Strayer. Thanks again, Nick, for sharing this awesome workflow with us. Here's my contribution 😉
-: 
+README written by Nick Strayer. Thanks again, Nick, for sharing this awesome workflow with us. Here's my contribution 😉 :
 _![](meme.png)
 
 _Switch to googlesheets__
