@@ -1,6 +1,6 @@
 ---
-title: "Nick Strayer's CV"
-author: Nick Strayer
+title: "Samantha Tyner's CV"
+author: Samantha Tyner, Ph.D.
 date: "`r Sys.Date()`"
 output:
   pagedown::html_resume:
@@ -27,7 +27,7 @@ library(tidyverse)
 using_googlesheets <- TRUE
 
 # Just the copied URL from the sheet
-positions_sheet_loc <- "https://docs.google.com/spreadsheets/d/14MQICF2F8-vf8CKPF1m4lyGKO6_thG-4aSwat1e2TWc"
+positions_sheet_loc <- "https://docs.google.com/spreadsheets/d/10EC2gr_zMz0zlVAyfIA8V0gOsXImQtDmdiCcUp0Cx4Q"
 
 # Is this sheet available for anyone to read? If you're using a private sheet
 # set this to false and go to gather_data.R and run the data loading manually
@@ -37,11 +37,11 @@ sheet_is_publicly_readable <- TRUE
 # Is the goal of this knit to build a document that is exported to PDF? If so
 # set this to true to have links turned into footnotes at the end of the
 # document
-PDF_EXPORT <- FALSE
+PDF_EXPORT <- FALSE 
 
 
-CV_PDF_LOC <- "https://github.com/nstrayer/cv/raw/master/strayer_cv.pdf"
-CV_HTML_LOC <- "nickstrayer.me/cv/"
+CV_PDF_LOC <- "example.com"
+CV_HTML_LOC <- "bit.ly/tyner-cv"
 
 
 # A global (gasp) variable that holds all the links that were inserted for
@@ -78,7 +78,7 @@ Aside
 ================================================================================
 
 
-![logo](logo.png){width=100%}
+![photo](sam-avatar.png){width=80%}
 
 ```{r}
 # When in export mode the little dots are unaligned, so fix that. 
@@ -113,7 +113,7 @@ Disclaimer {#disclaimer}
 
 Made with the R package [**pagedown**](https://github.com/rstudio/pagedown). 
 
-The source code is available at [github.com/nstrayer/cv](https://github.com/nstrayer/cv).
+The source code is available at [github.com/sctyner/cv](https://github.com/sctyner/cv).
 
 Last updated on `r Sys.Date()`.
 
@@ -122,10 +122,11 @@ Last updated on `r Sys.Date()`.
 Main
 ================================================================================
 
-Nick Strayer {#title}
+Samantha C. Tyner, Ph.D. {#title}
 --------------------------------------------------------------------------------
 
-```{r}
+```{r, eval = FALSE}
+# change eval to true when intro is written
 print_text_block(text_blocks, 'intro')
 ```
 
@@ -135,94 +136,71 @@ Education {data-icon=graduation-cap data-concise=true}
 --------------------------------------------------------------------------------
 
 ```{r}
-print_section(position_data, 'education')
+print_section(position_data, "education")
 ```
 
 
 
-Research Experience {data-icon=laptop}
+Professional Experience {data-icon=suitcase}
 --------------------------------------------------------------------------------
 
 ```{r}
-print_section(position_data, 'research_positions')
+print_section(position_data, 'profesh_positions')
 ```
 
 
 
-Industry Experience {data-icon=suitcase}
+Honors & Awards {data-icon=trophy}
 --------------------------------------------------------------------------------
 
-::: aside
 ```{r}
-print_text_block(text_blocks, 'industy_experience_aside')
-```
-:::
-
-```{r}
-print_section(position_data, 'industry_positions')
+print_section(position_data, 'honors_awards')
 ```
 
 <!-- These breaks just force a new page so section doesnt get cut off -->
-<br>
-<br>
-<br>
+<!--<br>-->
 
-Teaching Experience {data-icon=chalkboard-teacher}
+Publications {data-icon=file}
 --------------------------------------------------------------------------------
 
 ::: aside
 ```{r}
-print_text_block(text_blocks, 'teaching_experience_aside')
+print_text_block(text_blocks, 'publications_aside')
 ```
 :::
 
+
 ```{r}
-print_section(position_data, 'teaching_positions')
+print_section(position_data, 'publications')
 ```
 
 
-
-Selected Data Science Writing {data-icon=chart-line}
+Leadership & Service {data-icon=hands-helping}
 --------------------------------------------------------------------------------
 
 ::: aside
 ```{r}
-print_text_block(text_blocks, 'data_science_writing_aside')
+print_text_block(text_blocks, 'leadership_service_aside')
 ```
 :::
 
 ```{r}
-print_section(position_data, 'data_science_writings')
+print_section(position_data, 'leadership_service')
 ```
 
 
 
-Selected Press (About)  {data-icon=newspaper}
+Workshops Taught {data-icon=chalkboard-teacher}
 --------------------------------------------------------------------------------
 
+::: aside
 ```{r}
-print_section(position_data, 'about_me_press')
+print_text_block(text_blocks, 'workshops_aside' )
 ```
-
-
-<br>
-<br>
-
-
-Selected Press (By)  {data-icon=newspaper}
---------------------------------------------------------------------------------
+:::
 
 ```{r}
-print_section(position_data, 'by_me_press')
-```
-
-
-
-Selected Publications, Posters, and Talks {data-icon=book}
---------------------------------------------------------------------------------
-
-```{r}
-print_section(position_data, 'academic_articles')
+print_section(position_data, 'workshops_taught')
 ```
 
 
