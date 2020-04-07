@@ -40,8 +40,8 @@ sheet_is_publicly_readable <- TRUE
 PDF_EXPORT <- FALSE 
 
 
-CV_PDF_LOC <- "example.com"
-CV_HTML_LOC <- "bit.ly/tyner-cv"
+CV_PDF_LOC <- "https://github.com/sctyner/cv/raw/master/tyner_cv.pdf"
+CV_HTML_LOC <- "sctyner.github.io/cv"
 
 
 # A global (gasp) variable that holds all the links that were inserted for
