@@ -9,6 +9,8 @@ create_md_badge <- function(doi, ...){
   glue::glue("[![DOI]({bdg})](https://doi.org/{doi})")
 }
 
+create_md_badge(doi = "10.1002/ecs2.3082")
+
 create_md_badge(doi = "10.1016/j.forsciint.2019.110003")
 
 create_md_badge(doi = "10.5281/zenodo.3418141")
