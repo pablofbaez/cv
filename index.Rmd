@@ -1,6 +1,6 @@
 ---
-title: "Samantha Tyner's CV"
-author: Samantha Tyner, Ph.D.
+title: "Pablo Baez's CV"
+author: Pablo Báez, PhD.
 date: "`r Sys.Date()`"
 output:
   pagedown::html_resume:
@@ -27,7 +27,7 @@ library(tidyverse)
 using_googlesheets <- TRUE
 
 # Just the copied URL from the sheet
-positions_sheet_loc <- "https://docs.google.com/spreadsheets/d/10EC2gr_zMz0zlVAyfIA8V0gOsXImQtDmdiCcUp0Cx4Q"
+positions_sheet_loc <- "https://docs.google.com/spreadsheets/d/1eFFaTgiRB8I3Fc7eiSaxVJjSY9O08xaE91c2EYJT5lg"
 
 # Is this sheet available for anyone to read? If you're using a private sheet
 # set this to false and go to gather_data.R and run the data loading manually
@@ -40,8 +40,8 @@ sheet_is_publicly_readable <- TRUE
 PDF_EXPORT <- F
 
 
-CV_PDF_LOC <- "https://github.com/sctyner/cv/raw/master/tyner_cv.pdf"
-CV_HTML_LOC <- "cv.sctyner.me"
+CV_PDF_LOC <- "https://github.com/pablofbaez/cv/raw/master/pbaez_cv.pdf"
+CV_HTML_LOC <- "pablofbaez.github.io/cv"
 
 
 # A global (gasp) variable that holds all the links that were inserted for
@@ -78,7 +78,7 @@ Aside
 ================================================================================
 
 
-![photo](sam-avatar.png){width=80%}
+![photo](pb-avatar.png){width=130%}
 
 ```{r}
 # When in export mode the little dots are unaligned, so fix that. 
@@ -122,7 +122,7 @@ Last updated on `r Sys.Date()`.
 Main
 ================================================================================
 
-Samantha C. Tyner, Ph.D. {#title}
+Pablo Baez Benavides, PhD {#title}
 --------------------------------------------------------------------------------
 
 ```{r, eval = FALSE}
@@ -136,85 +136,117 @@ Education {data-icon=graduation-cap data-concise=true}
 --------------------------------------------------------------------------------
 
 ```{r}
-print_section(position_data, "education")
+print_section('education')
 ```
 
 
+
+Research Experience {data-icon=laptop}
+--------------------------------------------------------------------------------
+
+::: aside
+```{r}
+print_text_block('research_positions_aside')
+```
+:::
+
+```{r}
+print_section('research_positions')
+```
+
+<!-- These breaks just force a new page so section doesnt get cut off -->
+<!-- <br>
+<br>
+<br> -->
+
+Research Collaborations {data-icon=hands-helping}
+--------------------------------------------------------------------------------
+
+```{r}
+print_section('research_collaborations')
+```
+
+Service {data-icon=people-carry}
+--------------------------------------------------------------------------------
+
+```{r}
+print_section('service')
+```
+
+Workshops and Trainings Attended {data-icon=university}
+--------------------------------------------------------------------------------
+
+```{r}
+print_section('trainings_attended')
+```
 
 Professional Experience {data-icon=suitcase}
 --------------------------------------------------------------------------------
 
 ```{r}
-print_section(position_data, 'profesh_positions')
+print_section('professional_positions')
 ```
 
-
-
-Honors & Awards {data-icon=trophy}
+Teaching Experience {data-icon=chalkboard-teacher}
 --------------------------------------------------------------------------------
 
+::: aside
 ```{r}
-print_section(position_data, 'honors_awards')
+print_text_block('teaching_experience_aside')
+```
+:::
+
+```{r}
+print_section('teaching_positions')
 ```
 
-<!-- These breaks just force a new page so section doesnt get cut off -->
-<!--<br>-->
+
 
 Publications {data-icon=file}
 --------------------------------------------------------------------------------
 
 ::: aside
 ```{r}
-print_text_block(text_blocks, 'publications_aside')
+print_text_block('academic_articles_aside')
 ```
 :::
 
-
 ```{r}
-print_section(position_data, 'publications')
+print_section('academic_articles')
 ```
 
 
-Leadership & Service {data-icon=hands-helping}
+
+Presentations {data-icon=chart-bar}
 --------------------------------------------------------------------------------
 
-::: aside
 ```{r}
-print_text_block(text_blocks, 'leadership_service_aside')
-```
-:::
-
-```{r}
-print_section(position_data, 'leadership_service')
+print_section('poster_pres')
 ```
 
 
-
-Workshops Taught {data-icon=chalkboard-teacher}
+Selected Press (By)  {data-icon=newspaper}
 --------------------------------------------------------------------------------
 
-::: aside
 ```{r}
-print_text_block(text_blocks, 'workshops_aside' )
-```
-:::
-
-```{r}
-print_section(position_data, 'workshops_taught')
+print_section('by_me_press')
 ```
 
 
+
+Scholarships & Awards {data-icon=trophy}
+--------------------------------------------------------------------------------
+
+```{r}
+print_section('honors_awards')
+```
 
 ```{r}
 if(PDF_EXPORT){
   cat("
-  
 Links {data-icon=link}
 --------------------------------------------------------------------------------
-
 <br>
-
-
 ")
   
   walk2(links, 1:length(links), function(link, index){
