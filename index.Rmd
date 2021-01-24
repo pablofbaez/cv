@@ -113,7 +113,7 @@ Disclaimer {#disclaimer}
 
 Made with the R package [**pagedown**](https://github.com/rstudio/pagedown). 
 
-The source code is available at [github.com/sctyner/cv](https://github.com/sctyner/cv).
+The source code is available at [github.com/pablofbaez/cv](https://github.com/pablofbaez/cv).
 
 Last updated on `r Sys.Date()`.
 
@@ -136,109 +136,119 @@ Education {data-icon=graduation-cap data-concise=true}
 --------------------------------------------------------------------------------
 
 ```{r}
-print_section('education')
+position_data %>% print_section('education')
 ```
 
 
 
 Research Experience {data-icon=laptop}
 --------------------------------------------------------------------------------
-
+<!-- 
 ::: aside
+
 ```{r}
-print_text_block('research_positions_aside')
+text_blocks %>% print_text_block('research_positions_aside')
 ```
 :::
+-->
 
 ```{r}
-print_section('research_positions')
+position_data %>% print_section('research_positions')
 ```
+
+
 
 <!-- These breaks just force a new page so section doesnt get cut off -->
 <!-- <br>
 <br>
 <br> -->
-
+<!-- 
 Research Collaborations {data-icon=hands-helping}
 --------------------------------------------------------------------------------
-
-```{r}
-print_section('research_collaborations')
+-->
+```{r, eval = FALSE}
+# change eval to true when intro is written
+position_data %>% print_section('research_collaborations')
 ```
 
 Service {data-icon=people-carry}
 --------------------------------------------------------------------------------
 
 ```{r}
-print_section('service')
+position_data %>% print_section('service')
 ```
-
+<!-- 
 Workshops and Trainings Attended {data-icon=university}
 --------------------------------------------------------------------------------
-
-```{r}
-print_section('trainings_attended')
+-->
+```{r, eval = FALSE}
+# change eval to true when intro is written
+position_data %>% print_section('trainings_attended')
 ```
-
+<!-- 
 Professional Experience {data-icon=suitcase}
 --------------------------------------------------------------------------------
-
-```{r}
-print_section('professional_positions')
+-->
+```{r, eval = FALSE}
+# change eval to true when intro is written
+position_data %>% print_section('professional_positions')
 ```
+
+<!-- These breaks just force a new page so section doesnt get cut off -->
+<br>
+<br>
+<br>
+<br>
+<br> 
+<br>
+<br> 
+<br>
+<br>
 
 Teaching Experience {data-icon=chalkboard-teacher}
 --------------------------------------------------------------------------------
 
 ::: aside
 ```{r}
-print_text_block('teaching_experience_aside')
+text_blocks %>% print_text_block('teaching_experience_aside')
 ```
 :::
 
 ```{r}
-print_section('teaching_positions')
+position_data %>% print_section('teaching_positions')
 ```
 
-
+<!-- These breaks just force a new page so section doesnt get cut off -->
+<br>
 
 Publications {data-icon=file}
 --------------------------------------------------------------------------------
 
 ::: aside
 ```{r}
-print_text_block('academic_articles_aside')
+text_blocks %>% print_text_block('academic_articles_aside')
 ```
 :::
 
 ```{r}
-print_section('academic_articles')
+position_data %>% print_section('academic_articles')
 ```
 
-
-
+<!-- 
 Presentations {data-icon=chart-bar}
 --------------------------------------------------------------------------------
-
-```{r}
-print_section('poster_pres')
+-->
+```{r, eval = FALSE}
+# change eval to true when intro is written
+position_data %>% print_section('poster_pres')
 ```
-
-
-Selected Press (By)  {data-icon=newspaper}
---------------------------------------------------------------------------------
-
-```{r}
-print_section('by_me_press')
-```
-
 
 
 Scholarships & Awards {data-icon=trophy}
 --------------------------------------------------------------------------------
 
 ```{r}
-print_section('honors_awards')
+position_data %>% print_section('honors_awards')
 ```
 
 ```{r}
