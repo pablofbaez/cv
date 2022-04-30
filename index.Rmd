@@ -159,9 +159,9 @@ position_data %>% print_section('research_positions')
 
 
 <!-- These breaks just force a new page so section doesnt get cut off -->
-<!-- <br>
 <br>
-<br> -->
+<br>
+<br> 
 <!-- 
 Research Collaborations {data-icon=hands-helping}
 --------------------------------------------------------------------------------
@@ -194,16 +194,18 @@ Professional Experience {data-icon=suitcase}
 position_data %>% print_section('professional_positions')
 ```
 
-<!-- These breaks just force a new page so section doesnt get cut off -->
+<!-- These breaks just force a new page so section doesnt get cut off 
 <br>
 <br>
 <br>
 <br>
-<br> 
 <br>
-<br> 
+-->
 <br>
 <br>
+<br>
+<br>
+
 
 Teaching Experience {data-icon=chalkboard-teacher}
 --------------------------------------------------------------------------------
