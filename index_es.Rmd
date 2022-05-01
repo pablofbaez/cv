@@ -1,0 +1,270 @@
+---
+title: "Pablo Baez's CV_ES"
+author: Pablo Báez, PhD.
+date: "`r Sys.Date()`"
+output:
+  pagedown::html_resume:
+    css: ['css/styles.css', 'resume']
+    # set it to true for a self-contained HTML page but it'll take longer to render
+    self_contained: true
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  results='asis', 
+  echo = FALSE
+)
+
+library(glue)
+library(tidyverse)
+
+# ======================================================================
+# These variables determine how the the data is loaded and how the exports are
+# done.
+
+# Is data stored in google sheets? If no data will be gather from the csvs/
+# folder in project
+using_googlesheets <- TRUE
+
+# Just the copied URL from the sheet
+positions_sheet_loc <- "https://docs.google.com/spreadsheets/d/1Ky-3vTqjqEjulOSpLI8y44omM_IHIM2U4Aw1XXhFiCQ"
+
+# Is this sheet available for anyone to read? If you're using a private sheet
+# set this to false and go to gather_data.R and run the data loading manually
+# once to cache authentication
+sheet_is_publicly_readable <- TRUE
+
+# Is the goal of this knit to build a document that is exported to PDF? If so
+# set this to true to have links turned into footnotes at the end of the
+# document
+PDF_EXPORT <- F
+
+
+CV_PDF_LOC <- "https://github.com/pablofbaez/cv/raw/master/pbaez_cv_es.pdf"
+CV_HTML_LOC <- "pablofbaez.github.io/cv"
+
+
+# A global (gasp) variable that holds all the links that were inserted for
+# placement at the end
+links <- c()
+
+# ======================================================================
+# Now we source two external scripts. One contains functions for building the
+# text output and the other loads up our data from either googlesheets or csvs
+
+# Functions for building sections from CSV data
+source('parsing_functions.R') 
+
+# Load data for CV/Resume
+source('gather_data.R')
+```
+
+
+
+```{r}
+# When in export mode the little dots are unaligned, so fix that. 
+if(PDF_EXPORT){
+  cat("
+  <style>
+  :root{
+    --decorator-outer-offset-left: -6.5px;
+  }
+  </style>")
+}
+```
+
+
+Aside
+================================================================================
+
+
+![photo](pb-avatar.png){width=130%}
+
+```{r}
+# When in export mode the little dots are unaligned, so fix that. 
+if(PDF_EXPORT){
+  glue("View this CV online with links at _{CV_HTML_LOC}_")
+} else {
+  glue("[<i class='fas fa-download'></i> Download a PDF of this CV]({CV_PDF_LOC})")
+}
+```
+
+Información de Contacto {#contact}
+--------------------------------------------------------------------------------
+
+```{r}
+contact_info %>% 
+  glue_data("- <i class='fa fa-{icon}'></i> {contact}")
+```
+
+
+
+Habilidades computacionales {#skills}
+--------------------------------------------------------------------------------
+
+```{r}
+build_skill_bars(skills)
+```
+
+
+
+Disclaimer {#disclaimer}
+--------------------------------------------------------------------------------
+
+Hecho en R con la librería [**pagedown**](https://github.com/rstudio/pagedown). 
+
+Código fuente disponible en [github.com/pablofbaez/cv](https://github.com/pablofbaez/cv).
+
+Última actualización el `r Sys.Date()`.
+
+
+
+Main
+================================================================================
+
+Pablo Baez Benavides, PhD {#title}
+--------------------------------------------------------------------------------
+
+```{r, eval = FALSE}
+# change eval to true when intro is written
+print_text_block(text_blocks, 'intro')
+```
+
+
+
+Educación {data-icon=graduation-cap data-concise=true}
+--------------------------------------------------------------------------------
+
+```{r}
+position_data %>% print_section('education')
+```
+
+
+
+Experiencia en Investigación {data-icon=laptop}
+--------------------------------------------------------------------------------
+<!-- 
+::: aside
+
+```{r}
+text_blocks %>% print_text_block('research_positions_aside')
+```
+:::
+-->
+
+```{r}
+position_data %>% print_section('research_positions')
+```
+
+
+
+<!-- These breaks just force a new page so section doesnt get cut off
+<br>
+<br>
+<br>  -->
+<!-- 
+Research Collaborations {data-icon=hands-helping}
+--------------------------------------------------------------------------------
+-->
+```{r, eval = FALSE}
+# change eval to true when intro is written
+position_data %>% print_section('research_collaborations')
+```
+
+Servicio {data-icon=people-carry}
+--------------------------------------------------------------------------------
+
+```{r}
+position_data %>% print_section('service')
+```
+<!-- 
+Workshops and Trainings Attended {data-icon=university}
+--------------------------------------------------------------------------------
+-->
+```{r, eval = FALSE}
+# change eval to true when intro is written
+position_data %>% print_section('trainings_attended')
+```
+<!-- 
+Professional Experience {data-icon=suitcase}
+--------------------------------------------------------------------------------
+-->
+```{r, eval = FALSE}
+# change eval to true when intro is written
+position_data %>% print_section('professional_positions')
+```
+
+<!-- These breaks just force a new page so section doesnt get cut off 
+<br>
+<br>
+<br>
+<br>
+<br>
+-->
+<br>
+<br>
+<br>
+<br>
+
+
+Experiencia Docente {data-icon=chalkboard-teacher}
+--------------------------------------------------------------------------------
+
+::: aside
+```{r}
+text_blocks %>% print_text_block('teaching_experience_aside')
+```
+:::
+
+```{r}
+position_data %>% print_section('teaching_positions')
+```
+
+<!-- These breaks just force a new page so section doesnt get cut off -->
+<br>
+
+Publicaciones {data-icon=file}
+--------------------------------------------------------------------------------
+
+::: aside
+```{r}
+text_blocks %>% print_text_block('academic_articles_aside')
+```
+:::
+
+```{r}
+position_data %>% print_section('academic_articles')
+```
+
+<!-- 
+Presentations {data-icon=chart-bar}
+--------------------------------------------------------------------------------
+-->
+```{r, eval = FALSE}
+# change eval to true when intro is written
+position_data %>% print_section('poster_pres')
+```
+
+
+Becas y Premios {data-icon=trophy}
+--------------------------------------------------------------------------------
+
+```{r}
+position_data %>% print_section('honors_awards')
+```
+
+```{r}
+if(PDF_EXPORT){
+  cat("
+Links {data-icon=link}
+--------------------------------------------------------------------------------
+<br>
+")
+  
+  walk2(links, 1:length(links), function(link, index){
+    print(glue('{index}. {link}'))
+  })
+}
+```
+
+
